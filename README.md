@@ -1,4 +1,29 @@
-# Mood Journal - Roadmap
+# Mood Tracker PWA
+
+A simple, offline-first progressive web app for tracking daily moods, activities, and journal entries.
+
+## Features
+- Add, edit, and delete mood logs.
+- Offline support with a service worker.
+- Reset environment for testing.
+- Data persistence using IndexedDB.
+
+## Getting Started
+1. Clone the repository:
+   ```
+   git clone <repository-url>
+   cd mood-tracker
+   ```
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Run the app:
+   ```
+   npx live-server src/
+   ```
+
+# Roadmap
 ## v0.0.x – Alpha Stage (Core Functionality)
 
 ### v0.0.1
