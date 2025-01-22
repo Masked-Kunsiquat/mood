@@ -3,9 +3,9 @@
 
 ### v0.0.1
 
-- [ ] Implement basic PWA structure:
+- [X] Implement basic PWA structure:
 
-  - [ ] Set up service worker for offline caching.
+  - [X] Set up service worker for offline caching.
 
   - [X] Create responsive UI for desktop and mobile.
 
@@ -21,16 +21,16 @@
   - [X] Add optional journal entries for each day.
     - Status: Add textarea input for journal entries.
 
-- [ ] Set up local storage with IndexedDB:
+- [X] Set up local storage with IndexedDB:
 
   - [X] Design database schema for moods, activities, and logs.
     - Status: Schema defined in `db.js`.
 
-  - [ ] Implement CRUD operations for logs.
-    - [ ] Add log functionality (`addLog`).
-    - [ ] Read/display logs (`getLogs` UI integration).
-    - [ ] Update logs.
-    - [ ] Delete logs.
+  - [X] Implement CRUD operations for logs.
+    - [X] Add log functionality (`addLog`).
+    - [X] Read/display logs (`getLogs` UI integration).
+    - [X] Update logs.
+    - [X] Delete logs.
 
 
 
