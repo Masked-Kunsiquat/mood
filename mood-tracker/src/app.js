@@ -1,35 +1,25 @@
-import { initDB, addLog, getLogs } from "./db.js";
+import { initDB } from "./db.js";
+import { displayLogs } from "./ui.js";
+import { setupEventListeners } from "./events.js";
+import { setupResetEnvironment } from "./events.js";
+
+setupResetEnvironment();
 
 // Initialize the database
 initDB();
 
-const form = document.getElementById("log-form");
-const logList = document.getElementById("log-list");
+// Set up event listeners
+setupEventListeners();
 
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const mood = document.getElementById("mood").value;
-    const activity = document.getElementById("activity").value;
-    const journal = document.getElementById("journal").value;
-
-    const log = { mood, activity, journal, date: new Date().toISOString() };
-    addLog(log);
-
-    form.reset();
-    displayLogs();
-});
-
-const displayLogs = () => {
-    getLogs((logs) => {
-        logList.innerHTML = logs
-            .map(
-                (log) =>
-                    `<li class="p-2 bg-gray-200 rounded">${log.date}: ${log.mood} - ${log.activity} (${log.journal || "No note"})</li>`
-            )
-            .join("");
-    });
-};
-
-// Load logs on page load
+// Display logs on page load
 displayLogs();
+
+// Register Service Worker
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker
+            .register("/service-worker.js")
+            .then(() => console.log("Service Worker Registered"))
+            .catch((error) => console.error("Service Worker Registration Failed:", error));
+    });
+}
