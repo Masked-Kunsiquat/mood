@@ -11,7 +11,7 @@ A simple, offline-first progressive web app for tracking daily moods, activities
 ## Getting Started
 1. Clone the repository:
    ```
-   git clone <repository-url>
+   git clone https://github.com/Masked-Kunsiquat/mood
    cd mood-tracker
    ```
 2. Install dependencies:
