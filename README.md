@@ -7,23 +7,30 @@
 
   - [ ] Set up service worker for offline caching.
 
-  - [ ] Create responsive UI for desktop and mobile.
+  - [X] Create responsive UI for desktop and mobile.
 
 
-- [ ] Build core functionality:
+- [X] Build core functionality:
 
-  - [ ] Log daily moods (predefined list).
+  - [X] Log daily moods (predefined list).
+    - Status: Added UI elements for mood selection (dropdown).
 
-  - [ ] Log daily activities (predefined list).
+  - [X] Log daily activities (predefined list).
+    - Status: Added UI elements for activity selection (dropdown).
 
-  - [ ] Add optional journal entries for each day.
-
+  - [X] Add optional journal entries for each day.
+    - Status: Add textarea input for journal entries.
 
 - [ ] Set up local storage with IndexedDB:
 
-  - [ ] Design database schema for moods, activities, and logs.
+  - [X] Design database schema for moods, activities, and logs.
+    - Status: Schema defined in `db.js`.
 
   - [ ] Implement CRUD operations for logs.
+    - [ ] Add log functionality (`addLog`).
+    - [ ] Read/display logs (`getLogs` UI integration).
+    - [ ] Update logs.
+    - [ ] Delete logs.
 
 
 
