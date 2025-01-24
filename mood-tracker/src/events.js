@@ -34,7 +34,7 @@ export const setupEventListeners = () => {
             displayLogs();
         }
     });
-    // Handle export logs event
+};
     document.addEventListener("exportLogs", () => {
         exportLogsAsJSON((json) => {
             const blob = new Blob([json], { type: "application/json" });
