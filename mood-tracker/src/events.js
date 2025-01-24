@@ -113,4 +113,5 @@ export const setupResetEnvironment = () => {
         // Reload the page to apply changes
         window.location.reload();
     });
+}
 };
