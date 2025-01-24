@@ -29,23 +29,6 @@ export const setupEventListeners = () => {
             // Handle Edit Action
             editLog(id);
         } else if (target.classList.contains("delete-btn")) {
-            // Handle Delete Action
-            deleteLog(id);
-            displayLogs();
-        }
-    });
-};
-    document.addEventListener("exportLogs", () => {
-        exportLogsAsJSON((json) => {
-            const blob = new Blob([json], { type: "application/json" });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = "mood-logs.json";
-            a.click();
-            URL.revokeObjectURL(url);
-        });
-    });
 
 // Function to handle editing logs
 const editLog = (id) => {
