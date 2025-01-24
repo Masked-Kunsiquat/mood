@@ -17,4 +17,14 @@ export const displayLogs = () => {
             )
             .join("");
     });
+
+    // Add export button
+    const exportButton = document.createElement("button");
+    exportButton.textContent = "Export Logs as JSON";
+    exportButton.classList.add("bg-yellow-500", "text-white", "px-4", "py-2", "rounded", "mt-4");
+    document.body.appendChild(exportButton);
+    exportButton.addEventListener("click", () => {
+        const event = new CustomEvent("exportLogs");
+        document.dispatchEvent(event);
+    });
 };

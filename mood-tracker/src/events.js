@@ -1,4 +1,4 @@
-import { addLog, getLogs, updateLog, deleteLog } from "./db.js";
+import { addLog, getLogs, updateLog, deleteLog, exportLogsAsJSON } from "./db.js";
 import { displayLogs } from "./ui.js";
 
 export const setupEventListeners = () => {
@@ -34,7 +34,18 @@ export const setupEventListeners = () => {
             displayLogs();
         }
     });
-};
+    // Handle export logs event
+    document.addEventListener("exportLogs", () => {
+        exportLogsAsJSON((json) => {
+            const blob = new Blob([json], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "mood-logs.json";
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    });
 
 // Function to handle editing logs
 const editLog = (id) => {

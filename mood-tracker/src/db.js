@@ -16,6 +16,14 @@ export const initDB = () => {
     };
 };
 
+// Export logs as JSON
+export const exportLogsAsJSON = (callback) => {
+    getLogs((logs) => {
+        const json = JSON.stringify(logs, null, 2);
+        callback(json);
+    });
+};
+
 export const addLog = (log) => {
     const request = indexedDB.open(dbName, 1);
     request.onsuccess = (event) => {
