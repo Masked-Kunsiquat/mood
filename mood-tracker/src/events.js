@@ -1,34 +1,5 @@
-import { addLog, getLogs, updateLog, deleteLog, exportLogsAsJSON } from "./db.js";
+import { addLog, getLogs, updateLog, deleteLog } from "./db.js";
 import { displayLogs } from "./ui.js";
-
-export const setupEventListeners = () => {
-    const form = document.getElementById("log-form");
-    const logList = document.getElementById("log-list");
-
-    // Add new log
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const mood = document.getElementById("mood").value;
-        const activity = document.getElementById("activity").value;
-        const journal = document.getElementById("journal").value;
-
-        const log = { mood, activity, journal, date: new Date().toISOString() };
-        addLog(log);
-
-        form.reset();
-        displayLogs();
-    });
-
-    // Handle Edit and Delete actions using Event Delegation
-    logList.addEventListener("click", (event) => {
-        const target = event.target;
-        const id = Number(target.dataset.id); // Get log ID from data attribute
-
-        if (target.classList.contains("edit-btn")) {
-            // Handle Edit Action
-            editLog(id);
-        } else if (target.classList.contains("delete-btn")) {
 
 // Function to handle editing logs
 const editLog = (id) => {
@@ -74,6 +45,7 @@ const editLog = (id) => {
     });
 };
 
+// Function to reset the environment
 export const setupResetEnvironment = () => {
     const resetButton = document.getElementById("reset-env");
 
@@ -96,5 +68,40 @@ export const setupResetEnvironment = () => {
         // Reload the page to apply changes
         window.location.reload();
     });
-}
+};
+
+// Main Event Listener Setup
+export const setupEventListeners = () => {
+    const form = document.getElementById("log-form");
+    const logList = document.getElementById("log-list");
+
+    // Add new log
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const mood = document.getElementById("mood").value;
+        const activity = document.getElementById("activity").value;
+        const journal = document.getElementById("journal").value;
+
+        const log = { mood, activity, journal, date: new Date().toISOString() };
+        addLog(log);
+
+        form.reset();
+        displayLogs();
+    });
+
+    // Handle Edit and Delete actions using Event Delegation
+    logList.addEventListener("click", (event) => {
+        const target = event.target;
+        const id = Number(target.dataset.id); // Get log ID from data attribute
+
+        if (target.classList.contains("edit-btn")) {
+            // Handle Edit Action
+            editLog(id);
+        } else if (target.classList.contains("delete-btn")) {
+            // Handle Delete Action
+            deleteLog(id);
+            displayLogs(); // Refresh the log list after deletion
+        }
+    });
 };
